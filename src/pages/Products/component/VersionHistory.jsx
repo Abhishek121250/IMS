@@ -69,9 +69,9 @@ const VersionHistory = ({ open, onClose, productId }) => {
         >
             <DialogTitle sx={{ pl: 2, zIndex: 1 }}>
                 <Grid container sx={{ display: "flex", alignItems: "center" }}>
-                    <Grid item sx={{ fontSize: "1.5rem", fontWeight: 600 }}>
+                    <Grid item sx={{ fontSize: "1rem", fontWeight: 600 }}>
                         <IconButton onClick={onClose}>
-                            <ArrowBackIcon />
+                            <ArrowBackIcon fontSize="small" />
                         </IconButton>
                         Version History
                     </Grid>
@@ -113,6 +113,7 @@ const VersionHistory = ({ open, onClose, productId }) => {
                                 display: "flex",
                                 justifyContent: "center",
                                 alignItems: "center",
+                                fontSize: "0.7rem",
                                 backgroundColor: "#FFFFFF",
                                 border: "1.5px solid rgba(229, 229,229,0.5)",
                             }}
