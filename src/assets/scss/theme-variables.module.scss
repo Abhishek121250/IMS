@@ -1,0 +1,35 @@
+//variables
+$appFontSize: 1.125rem;
+$headerHeight: clamp(50px, 5vh, 60px);
+$sideBarWidth: clamp(50px, 5vw, 80px);
+$gridGap: 25px;
+$gridGapUserCreation: 22px;
+
+$themes: (
+    appBackgroundColor: #ffffff,
+    primaryMain: #ffffff,
+    sideBar:#D9D9D9,
+    secondaryMain: #df1d84,
+    tertiaryMain: #ffffff,
+    tertiaryLight: #bcbcbc,
+    tertiaryDark: #a7a6a6,
+    tertiaryExtraDark: #606060,
+    errorMain: #bd0f11,
+    infoMain: #f7a600,
+    infoDark: #d98f00,
+    successMain: #0fae88,
+);
+
+:root {
+    @each $color, $value in $themes {
+        --#{$color}: #{$value};
+    }
+}
+
+// Export theme colors to JS
+// name of color variable will in the format - colorName+themeMode(light/dark)
+:export {
+    @each $key, $value in $themes {
+        #{unquote($key)}: $value;
+    }
+}
