@@ -12,7 +12,7 @@ const AllProducts = () => {
     };
 
     return (
-        <Box style={{ maxHeight: "60vh", overflow: "auto" }}>
+        <Box style={{ maxHeight: "58vh", overflow: "auto" }}>
             {data.map((item, index) => (
                 <ProductCard
                     key={index}

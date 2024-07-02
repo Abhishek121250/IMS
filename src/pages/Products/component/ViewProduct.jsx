@@ -8,21 +8,20 @@ const styles = {
         border: "1px solid rgba(96, 96, 96, 0.1)",
         textAlign: "center",
         color: "#606060",
-        fontSize: "1rem",
+        fontSize: "0.8rem",
         fontWeight: 600,
         padding: "10px",
         backgroundColor: "#F7F7F7",
     },
     mainTextStyle: {
         color: "#606060",
-        fontSize: "1rem",
+        fontSize: "0.7rem",
         fontWeight: 500,
-        padding: 1,
+        paddingBottom: 0.5,
     },
     subTextStyle: {
-        fontSize: "1rem",
+        fontSize: "0.7rem",
         fontWeight: 500,
-        padding: 1,
     },
 };
 
@@ -144,18 +143,16 @@ const ViewProduct = () => {
                                     <Typography
                                         sx={{
                                             color: "#606060",
-                                            fontSize: "0.9rem",
+                                            fontSize: "0.7rem",
                                             fontWeight: 500,
-                                            p: 1,
                                         }}
                                     >
                                         Payment Mode
                                     </Typography>
                                     <Typography
                                         sx={{
-                                            fontSize: "0.9rem",
+                                            fontSize: "0.7rem",
                                             fontWeight: 500,
-                                            p: 1,
                                         }}
                                     >
                                         Disbursment Deduction

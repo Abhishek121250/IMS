@@ -6,11 +6,10 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 const StyledBox = styled(Box)(() => ({
     display: "flex",
     alignItems: "center",
-    marginTop: "0.5rem",
 }));
 
 const Breadcrumb = styled("div")(() => ({
-    height: "1.35rem",
+    height: "1.2rem",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -19,7 +18,7 @@ const Breadcrumb = styled("div")(() => ({
     border: "1px solid #E9E9E9",
     padding: "1px 5px",
     borderRadius: "5px",
-    fontSize: "1.2rem",
+    fontSize: "0.7rem",
 }));
 
 const BreadCrumb = ({
@@ -30,7 +29,7 @@ const BreadCrumb = ({
         <Box>
             <Box>
                 <Typography
-                    sx={{ fontWeight: "600", color: "black", fontSize: "1.5rem" }}
+                    sx={{ fontWeight: "600", color: "black", fontSize: "1rem" }}
                 >
                     {title}
                 </Typography>

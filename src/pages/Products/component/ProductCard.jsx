@@ -21,22 +21,24 @@ const styles = {
         border: "1px solid #DEDEDE",
         marginTop: 1,
         marginBottom: 2,
-        marginRight: 3,
+        marginRight: 2,
     },
     buttonTextStyle: {
-        paddingLeft: 2,
-        fontSize: "1rem",
+        color: "54565C",
+        paddingLeft: 1,
+        fontSize: "0.7rem",
         fontWeight: 500,
     },
     statusContainerStyle: {
         display: "flex",
         justifyContent: "right",
         alignItems: "center",
+        fontSize: "0.7rem",
     },
     bottomTextStyle: {
         margin: 1,
         marginLeft: 1.5,
-        fontSize: "1.1rem",
+        fontSize: "0.7rem",
         fontWeight: 500,
         color: "#54565C",
     },
@@ -49,22 +51,20 @@ const styles = {
         border: "1px solid rgba(96, 96, 96, 0.1)",
         display: "flex",
         justifyContent: "center",
-        padding: 2,
+        padding: 1,
         maxHeight: "40px",
         minHeight: "40px",
     },
-    productProvider: { fontSize: "1.3rem", fontWeight: 500, color: "#2C3039" },
+    productProvider: { fontSize: "1rem", fontWeight: 500, color: "#2C3039" },
     productPartner: {
-        fontSize: "1rem",
+        fontSize: "0.7rem",
         fontWeight: 500,
         color: "#54565C",
-        mt: 2,
         borderRight: "1px solid #54565C",
     },
     productStyle: {
-        fontSize: "1rem",
+        fontSize: "0.7rem",
         fontWeight: 500,
-        mt: 2,
         ml: 2,
         color: "#54565C",
     },
@@ -146,7 +146,7 @@ const ProductCard = ({ item, options, isExpanded, onExpandClick }) => {
         <Card sx={styles.cardStyle}>
             <Card>
                 <Grid container>
-                    <Grid item xs={12} sx={{ p: 2 }}>
+                    <Grid item xs={12} sx={{ p: 1 }}>
                         <Grid container>
                             <Grid item xs={2}>
                                 <ProviderLogo providerId={item?.providerId} />

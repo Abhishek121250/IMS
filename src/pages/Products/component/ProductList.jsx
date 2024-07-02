@@ -36,11 +36,12 @@ const ProductList = () => {
     };
 
     return (
-        <Grid container spacing={1} sx={{ maxHeight: "100%", pl: 3 }}>
+        <Grid container spacing={1} sx={{ maxHeight: "100%", pl: 2 }}>
             <Grid item xs={12}>
                 <Typography
                     sx={{
-                        fontSize: "1.5rem",
+                        color: "#2C3039",
+                        fontSize: "1rem",
                         fontWeight: 600,
                     }}
                 >

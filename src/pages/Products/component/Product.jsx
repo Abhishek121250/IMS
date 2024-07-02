@@ -11,36 +11,38 @@ const StatusCard = ({ icon, count, label, borderColor }) => {
         <Card
             elevation={1}
             sx={{
-                padding: 2,
+                padding: 1,
+                paddingLeft: 2,
                 borderLeft: `3px solid ${borderColor}`,
             }}
         >
             <Grid
                 container
+                rowSpacing={1}
                 sx={{
                     display: "flex",
                     alignItems: "center",
                 }}
             >
-                <Grid item xs={5}>
-                    <Grid item xs={1}>
-                        <img src={icon} alt={label} style={{ height: 20 }} />
-                    </Grid>
+                <Grid item xs={5} sx={{ display: "flex", alignItems: "center" }}>
+                    <img src={icon} alt={label} style={{ height: 20 }} />
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={5}>
                     <Typography
                         sx={{
-                            fontSize: "1.5rem",
-                            fontWeight: "700",
+                            fontSize: "1rem",
+                            fontWeight: "600",
                         }}
                     >
                         {count}
                     </Typography>
                 </Grid>
+                <Grid item xs={12}>
+                    <Typography sx={{ fontSize: "0.8rem", fontWeight: "600" }}>
+                        {label}
+                    </Typography>
+                </Grid>
             </Grid>
-            <Typography sx={{ fontSize: "1.3rem", fontWeight: "600" }}>
-                {label}
-            </Typography>
         </Card>
     );
 };

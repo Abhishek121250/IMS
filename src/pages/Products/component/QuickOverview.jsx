@@ -25,10 +25,10 @@ const QuickOverview = () => {
     return (
         <Grid container>
             <Card elevation={2}>
-                <Grid container spacing={2} rowSpacing={2} sx={{ p: 2 }}>
+                <Grid container rowSpacing={2} sx={{ p: 2 }}>
                     <Grid
                         item
-                        xs={5}
+                        xs={4}
                         sx={{
                             display: "flex",
                             justifyContent: "left",
@@ -37,7 +37,7 @@ const QuickOverview = () => {
                     >
                         <Typography
                             sx={{
-                                fontSize: "1.5rem",
+                                fontSize: "0.9rem",
                                 fontWeight: 600,
                                 color: "#54565C",
                             }}
@@ -47,7 +47,7 @@ const QuickOverview = () => {
                     </Grid>
                     <Grid
                         item
-                        xs={7}
+                        xs={8}
                         sx={{
                             display: "flex",
                             justifyContent: "right",

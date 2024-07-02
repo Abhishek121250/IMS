@@ -6,7 +6,7 @@ import QuickOverview from "./QuickOverview";
 
 const ProductListDashboard = () => {
     return (
-        <Grid container spacin={2}>
+        <Grid container spacin={1}>
             <Grid item xs={4.5}>
                 <Grid container rowSpacing={2}>
                     <Grid item xs={12}>

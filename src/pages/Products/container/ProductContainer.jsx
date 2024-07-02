@@ -6,7 +6,7 @@ import ProductListDashboard from "../component/ProductListDashboard";
 
 const ProductContainer = () => {
     return (
-        <>
+        <div style={{ padding: 0 }}>
             <Grid container>
                 <Grid item xs={12}>
                     <BreadCrumb
@@ -31,7 +31,7 @@ const ProductContainer = () => {
                     </Box>
                 </Grid>
             </Grid>
-        </>
+        </div>
     );
 };
 

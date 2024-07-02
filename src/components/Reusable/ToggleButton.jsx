@@ -8,9 +8,8 @@ const ToggleButton = ({
     handleChange,
     isIconToggle,
     selectedBgColor,
-    selectedColor,
 }) => {
-    const getStyles = (border, isIconToggle, selectedBgColor, selectedColor) => ({
+    const getStyles = (border, isIconToggle, selectedBgColor) => ({
         outer: {
             backgroundColor: "#F6F6F6",
             border: "2px solid #D9D9D9",
@@ -58,7 +57,7 @@ const ToggleButton = ({
             paddingRight: "3px",
             textTransform: "none",
             fontWeight: "600",
-            fontSize: "1rem",
+            fontSize: "0.6rem",
             opacity: 1,
             minWidth: isIconToggle && "fit-content",
             color: "#939393",
@@ -76,10 +75,10 @@ const ToggleButton = ({
             paddingRight: "8px",
             textTransform: "none",
             fontWeight: "700",
-            fontSize: "1rem",
+            fontSize: "0.6rem",
             opacity: 1,
             minWidth: isIconToggle && "fit-content",
-            color: selectedColor,
+            color: "#2C3039",
             backgroundColor: selectedBgColor,
             padding: 2,
         },
@@ -96,12 +95,8 @@ const ToggleButton = ({
                     key={idx}
                     sx={
                         selectedTab === idx
-                            ? getStyles(
-                                  border,
-                                  isIconToggle,
-                                  selectedBgColor,
-                                  selectedColor
-                              ).selectedTabContainer
+                            ? getStyles(border, isIconToggle, selectedBgColor)
+                                  .selectedTabContainer
                             : getStyles(border).tabContainer
                     }
                     onClick={() => handleTabClick(idx)}
@@ -110,12 +105,8 @@ const ToggleButton = ({
                         label={item?.label}
                         sx={
                             selectedTab === idx
-                                ? getStyles(
-                                      border,
-                                      isIconToggle,
-                                      selectedBgColor,
-                                      selectedColor
-                                  ).selectedTab
+                                ? getStyles(border, isIconToggle, selectedBgColor)
+                                      .selectedTab
                                 : getStyles(border, isIconToggle).tab
                         }
                     />
