@@ -1,0 +1,44 @@
+@use "../core/variables" as *;
+@use "../theme-variables.module.scss" as *;
+
+.flex-center {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+html {
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    scrollbar-width: thin;
+
+    // /* Define the scrollbar thumb and track styles */
+    ::-webkit-scrollbar {
+        width: 5px;
+        height: 5px; /* Width of the scrollbar */
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #e1dbdb; /* Color of the scrollbar thumb */
+        border-radius: 50px; /* Rounded corners for the thumb */
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #838383; /* Color of the scrollbar thumb on hover */
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: #ddd; /* Color of the scrollbar track */
+    }
+
+    ::-webkit-scrollbar-track-piece {
+        background-color: #eee; /* Color of the visible portion of the track */
+    }
+}
