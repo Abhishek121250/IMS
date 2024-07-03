@@ -47,13 +47,15 @@ const styles = {
     },
     mainTextStyle: {
         color: "#606060",
-        fontSize: "0.7rem",
+        fontSize: "12px",
         fontWeight: 500,
         paddingBottom: 0.5,
     },
     subTextStyle: {
-        fontSize: "0.7rem",
-        fontWeight: 500,
+        fontSize: "12px",
+        fontWeight: 400,
+        display: "flex",
+        justifyContent: "right",
     },
 };
 
@@ -108,7 +110,7 @@ const ViewProduct = () => {
                 <Grid
                     item
                     xs={4}
-                    sx={{ padding: 1, border: "1px solid rgba(96, 96, 96, 0.1)" }}
+                    sx={{ padding: 2, border: "1px solid rgba(96, 96, 96, 0.1)" }}
                 >
                     <DetailsComponent
                         mainText="Consent"
@@ -138,7 +140,7 @@ const ViewProduct = () => {
                             item
                             xs={6}
                             sx={{
-                                p: 1,
+                                p: 2,
                                 border: "1px solid rgba(96, 96, 96, 0.1)",
                             }}
                         >
@@ -150,16 +152,12 @@ const ViewProduct = () => {
                                 mainText="Premium Amount"
                                 subText={`₹ ${premiumDetails.premiumAmount}`}
                             />
-                            <DetailsComponent
-                                mainText="Payment Mode"
-                                subText={premiumDetails.paymentMode}
-                            />
                         </Grid>
                         <Grid
                             item
                             xs={6}
                             sx={{
-                                p: 1,
+                                p: 2,
                                 border: "1px solid rgba(96, 96, 96, 0.1)",
                             }}
                         >
@@ -184,7 +182,7 @@ const ViewProduct = () => {
                             item
                             xs={6}
                             sx={{
-                                padding: 1,
+                                padding: 2,
                                 border: "1px solid rgba(96, 96, 96, 0.1)",
                             }}
                         >
@@ -193,7 +191,7 @@ const ViewProduct = () => {
                                     <Typography
                                         sx={{
                                             color: "#606060",
-                                            fontSize: "0.7rem",
+                                            fontSize: "12px",
                                             fontWeight: 500,
                                         }}
                                     >
@@ -201,11 +199,11 @@ const ViewProduct = () => {
                                     </Typography>
                                     <Typography
                                         sx={{
-                                            fontSize: "0.7rem",
-                                            fontWeight: 500,
+                                            fontSize: "12px",
+                                            fontWeight: 400,
                                         }}
                                     >
-                                        Disbursement Deduction
+                                        {premiumDetails.paymentMode}
                                     </Typography>
                                 </Grid>
                                 <Grid
@@ -225,7 +223,7 @@ const ViewProduct = () => {
                             item
                             xs={6}
                             sx={{
-                                padding: 1,
+                                padding: 2,
                             }}
                         >
                             <DetailsComponent mainText="Image Proof" subText="" />

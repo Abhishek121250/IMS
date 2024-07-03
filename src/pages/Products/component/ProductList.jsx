@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 
 import { Grid, Typography } from "@mui/material";
@@ -8,7 +9,7 @@ import ApprovedProducts from "./ApprovedProducts";
 import CreatedProducts from "./CreatedProducts";
 import RejectedProducts from "./RejectedProducts";
 
-const ProductList = () => {
+const ProductList = ({ productlist }) => {
     const [selectedTab2, setSelectedTab2] = useState(0);
 
     const productToggleData = [
@@ -23,13 +24,13 @@ const ProductList = () => {
     const renderProductList = () => {
         switch (selectedTab2) {
             case 0:
-                return <AllProducts />;
+                return <AllProducts productlist={productlist} />;
             case 1:
-                return <CreatedProducts />;
+                return <CreatedProducts productlist={productlist} />;
             case 2:
-                return <ApprovedProducts />;
+                return <ApprovedProducts productlist={productlist} />;
             case 3:
-                return <RejectedProducts />;
+                return <RejectedProducts productlist={productlist} />;
             default:
                 return null;
         }

@@ -1,23 +1,20 @@
+/* eslint-disable react/prop-types */
 import { Box } from "@mui/material";
 
-import data from "../../../data";
 // import useProductListAPI from "../../../store/useProductListAPI";
 import ProductCard from "./ProductCard";
 import { useState } from "react";
 
-const AllProducts = () => {
+const AllProducts = ({ productlist }) => {
     const [expandedProductId, setExpandedProductId] = useState(null);
 
     const handleExpandClick = (productId) => {
         setExpandedProductId(expandedProductId === productId ? null : productId);
     };
-
-    // const data = useProductListAPI();
-    console.log(data, "check data");
-
+    console.log(productlist, "check in prod");
     return (
         <Box style={{ maxHeight: "58vh", overflow: "auto" }}>
-            {data.map((item, index) => (
+            {productlist.map((item, index) => (
                 <ProductCard
                     key={index}
                     item={item}

@@ -1,17 +1,19 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 
 import { Box } from "@mui/material";
 
-import data from "../../../data";
 import ProductCard from "./ProductCard";
 
-const RejectedProducts = () => {
+const RejectedProducts = ({ productlist }) => {
     const [expandedProductId, setExpandedProductId] = useState(null);
 
     const handleExpandClick = (productId) => {
         setExpandedProductId(expandedProductId === productId ? null : productId);
     };
-    const rejectedProducts = data.filter((item) => item.status === "Rejected");
+    const rejectedProducts = productlist.filter(
+        (item) => item.status === "Rejected"
+    );
 
     return (
         <Box style={{ maxHeight: "63vh", overflow: "auto" }}>
