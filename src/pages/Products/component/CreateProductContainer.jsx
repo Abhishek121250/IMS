@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
-import abc from "../../../assets/abc.svg";
+import abc from "../../../assets/svg/abc.svg";
 import { useNavigate } from "react-router-dom";
 
 const CreateProductContainer = () => {

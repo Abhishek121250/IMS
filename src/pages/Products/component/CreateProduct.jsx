@@ -8,9 +8,7 @@ import BreadCrumb from "../../../components/Reusable/BreadCrumb";
 const CreateProduct = () => {
     const [tabIndex, setTabIndex] = useState(0);
     const [completedTabs, setCompletedTabs] = useState([false, false, false, false]);
-
     const handleTabChange = (event, newValue) => {
-        // setTabIndex(newValue);
         if (completedTabs[newValue - 1] || newValue === 0) {
             setTabIndex(newValue);
         }
@@ -20,10 +18,6 @@ const CreateProduct = () => {
         newCompletedTabs[index] = true;
         setCompletedTabs(newCompletedTabs);
     };
-
-    // const goToNextTab = () => {
-    //   setTabIndex(1);
-    // };
 
     const goToNextTab = () => {
         markTabAsCompleted(tabIndex);
@@ -38,111 +32,115 @@ const CreateProduct = () => {
                 title="Create Product"
                 breadcrumbs={["Dashboard", "CreateProduct"]}
             />
-            <Tabs
-                value={tabIndex}
-                onChange={handleTabChange}
-                variant="fullWidth"
-                TabIndicatorProps={{
-                    sx: {
-                        top: 0,
-                        backgroundColor: "#DF2B87",
-                        height: "3px",
-                        borderRadius: "2px",
-                        width: `${(tabIndex + 1) * 25}%`,
-                    },
-                }}
-                aria-label="simple tabs example"
-            >
-                {[
-                    "Policy Details",
-                    "Premium Details",
-                    "Account Details",
-                    "Preview Data",
-                ].map((label, index) => (
-                    <Tab
-                        key={index}
-                        label={
-                            <Box
-                                sx={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    backgroundColor: "#E9E9E9",
-                                    padding: "3px 10px 3px 3px ",
-
-                                    borderRadius: "1rem",
-                                    textTransform: "none",
-                                }}
-                            >
-                                <div
-                                    style={{
-                                        background: "#DF2B87",
-                                        borderRadius: "50%",
-                                        height: "1.4rem",
-                                        width: "1.4rem",
+            <Box style={{ boxShadow: "0px 1px 4px 0px #00000040" }}>
+                <Tabs
+                    value={tabIndex}
+                    onChange={handleTabChange}
+                    variant="fullWidth"
+                    TabIndicatorProps={{
+                        sx: {
+                            top: 0,
+                            backgroundColor: "#DF2B87",
+                            height: "3px",
+                            borderRadius: "2px",
+                            width: `${(tabIndex + 1) * 25}%`,
+                        },
+                    }}
+                    aria-label="simple tabs example"
+                >
+                    {[
+                        "Policy Details",
+                        "Premium Details",
+                        "Account Details",
+                        "Preview Data",
+                    ].map((label, index) => (
+                        <Tab
+                            key={index}
+                            label={
+                                <Box
+                                    sx={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        backgroundColor: "#E9E9E9",
+                                        padding: "3px 10px 3px 3px ",
+                                        borderRadius: "1rem",
+                                        textTransform: "none",
                                     }}
                                 >
-                                    <Typography>{index + 1}</Typography>
-                                </div>
-                                <div>
-                                    <Typography
+                                    <div
                                         style={{
-                                            color: "#54565C",
-                                            marginLeft: "0.4rem",
-                                            fontSize: "1rem",
+                                            background:
+                                                tabIndex === index
+                                                    ? "#DF2B87"
+                                                    : "#E9E9E9",
+                                            borderRadius: "50%",
+                                            height: "1.2rem",
+                                            width: "1.2rem",
                                         }}
                                     >
-                                        {label}
-                                    </Typography>
-                                </div>{" "}
-                            </Box>
-                        }
-                        sx={{
-                            border: "1px solid #E9E9E9",
-                            color: "#0009",
-                            pointerEvents:
-                                completedTabs[index - 1] || index === 0
-                                    ? "auto"
-                                    : "none",
-                        }}
-                        onClick={(event) => {
-                            event.preventDefault();
-                        }}
-                    />
-                ))}
-            </Tabs>
-
-            <Box sx={{ border: "1px solid #E9E9E9" }}>
-                {tabIndex === 0 && (
-                    <Box>
-                        <PolicyDetails goToNextTab={goToNextTab} />
-                    </Box>
-                )}
-                {tabIndex === 1 && (
-                    <Box>
-                        <Typography>Details Content</Typography>
-                        <PremiumDetails
-                            goToNextTab={goToNextTab}
-                            goToPreviousTab={goToPreviousTab}
+                                        <Typography sx={{ fontSize: "0.8rem" }}>
+                                            {index + 1}
+                                        </Typography>
+                                    </div>
+                                    <div>
+                                        <Typography
+                                            sx={{
+                                                color: "#54565C",
+                                                marginLeft: "0.4rem",
+                                                fontSize: "0.85rem",
+                                            }}
+                                        >
+                                            {label}
+                                        </Typography>
+                                    </div>{" "}
+                                </Box>
+                            }
+                            sx={{
+                                padding: "0px",
+                                border: "1px solid #E9E9E9",
+                                color: "#0009",
+                                pointerEvents:
+                                    completedTabs[index - 1] || index === 0
+                                        ? "auto"
+                                        : "none",
+                            }}
+                            onClick={(event) => {
+                                event.preventDefault();
+                            }}
                         />
-                    </Box>
-                )}
-                {tabIndex === 2 && (
-                    <Box>
-                        <Typography>More Info Content</Typography>
-                        <AccountDetails
-                            goToNextTab={goToNextTab}
-                            goToPreviousTab={goToPreviousTab}
-                        />
-                    </Box>
-                )}
-                {tabIndex === 3 && (
-                    <Box>
-                        <PreviewData
-                            goToNextTab={goToNextTab}
-                            goToPreviousTab={goToPreviousTab}
-                        />
-                    </Box>
-                )}
+                    ))}
+                </Tabs>
+                <Box sx={{ border: "1px solid #E9E9E9" }}>
+                    {tabIndex === 0 && (
+                        <Box>
+                            <PolicyDetails goToNextTab={goToNextTab} />
+                        </Box>
+                    )}
+                    {tabIndex === 1 && (
+                        <Box>
+                            <PremiumDetails
+                                goToNextTab={goToNextTab}
+                                goToPreviousTab={goToPreviousTab}
+                            />
+                        </Box>
+                    )}
+                    {tabIndex === 2 && (
+                        <Box>
+                            <AccountDetails
+                                goToNextTab={goToNextTab}
+                                goToPreviousTab={goToPreviousTab}
+                            />
+                        </Box>
+                    )}
+                    {tabIndex === 3 && (
+                        <Box>
+                            <PreviewData
+                                goToNextTab={goToNextTab}
+                                goToPreviousTab={goToPreviousTab}
+                            />
+                        </Box>
+                    )}
+                </Box>
             </Box>
         </>
     );

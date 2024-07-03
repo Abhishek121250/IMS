@@ -75,9 +75,12 @@ const TickIcon = () => (
 const CardItem = ({ title, subtext, selectedValue, handleChange }) => (
     <div>
         <Card
-            elevation={0}
+            elevation={selectedValue === title ? 2 : 0}
             sx={{
-                border: "2px solid #D1D1D1",
+                border:
+                    selectedValue === title
+                        ? "2px solid #DF2B87"
+                        : "2px solid #D1D1D1",
                 margin: 2,
                 padding: 0,
                 paddingBottom: 0,

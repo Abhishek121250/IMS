@@ -31,31 +31,33 @@ const ProductContainer = () => {
                                 breadcrumbs={["Home", "Products"]}
                             />
                         </Grid>
-                        <Grid item xs={2}>
-                            <Box
-                                sx={{
-                                    display: "flex",
-                                    justifyContent: "center",
-                                    paddingBottom: "1rem",
-                                }}
-                            >
-                                <Button
+                        {data?.length > 0 && (
+                            <Grid item xs={2}>
+                                <Box
                                     sx={{
-                                        width: "100%",
-                                        background: "#DF2B87",
-                                        color: "white",
-                                        ":hover": {
-                                            background: "#DF2B87",
-                                        },
-                                        padding: "0.6rem 1.5rem",
-                                        textTransform: "none",
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        paddingBottom: "1rem",
                                     }}
-                                    onClick={handleDialogOpen}
                                 >
-                                    <Typography> + Create Product</Typography>
-                                </Button>
-                            </Box>
-                        </Grid>
+                                    <Button
+                                        sx={{
+                                            width: "100%",
+                                            background: "#DF2B87",
+                                            color: "white",
+                                            ":hover": {
+                                                background: "#DF2B87",
+                                            },
+                                            padding: "0.6rem 1.5rem",
+                                            textTransform: "none",
+                                        }}
+                                        onClick={handleDialogOpen}
+                                    >
+                                        <Typography> + Create Product</Typography>
+                                    </Button>
+                                </Box>
+                            </Grid>
+                        )}
                     </Grid>
                 </Grid>
                 <Grid item xs={12}>

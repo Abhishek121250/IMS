@@ -1,7 +1,39 @@
 /* eslint-disable react/prop-types */
 import { Box, Grid, Typography } from "@mui/material";
-
 import LoanPaper from "../../../assets/svg/LoanPaper.svg";
+
+const databyID = {
+    id: "prd-dce05a9a-4b7a-40eb-b915-951bd457b5ad",
+    providerId: "prv-1a70dfd6-6464-4c32-9f52-ee413ebf37aa",
+    name: "Hospicash",
+    partner: "Finhaat",
+    policyDetails: {
+        consent: "Digital",
+        insurance: "Single",
+        minEntryAge: 18,
+        maxEntryAge: 65,
+        maturityAge: 75,
+        masterPolicyNumber: "MPN123456",
+        ratePerThousand: 10,
+    },
+    premiumDetails: {
+        sumAssured: "10000.00",
+        premiumAmount: "250.00",
+        paymentMode: "UPI",
+    },
+    accountDetails: {
+        accountNo: "1234567890",
+        HolderName: "Srikanth Pansuri",
+        ifscCode: "ABCD0123456",
+        bankName: "Sample Bank",
+        proofOfAccountConfirmation: [
+            {
+                img1: "proof123.jpg",
+                img2: "proof456.jpg",
+            },
+        ],
+    },
+};
 
 const styles = {
     headerStyle: {
@@ -40,19 +72,23 @@ const DetailsComponent = ({ mainText, subText }) => (
     </Grid>
 );
 
-const ImageViewerComponent = () => (
+const ImageViewerComponent = ({ imgSrc }) => (
     <Grid container>
-        <Grid item xs={4}>
-            -
-        </Grid>
-        <Grid item xs={4}>
-            -
-        </Grid>
+        {imgSrc.map((src, index) => (
+            <Grid item xs={6} key={index}>
+                <img
+                    src={src}
+                    alt={`Proof ${index + 1}`}
+                    style={{ width: "100%" }}
+                />
+            </Grid>
+        ))}
     </Grid>
 );
 
-const img = "117e5022-42e9-4bc2-bf3c-f9aea9220306";
 const ViewProduct = () => {
+    const { policyDetails, premiumDetails, accountDetails } = databyID;
+
     return (
         <Box>
             <Grid container>
@@ -74,12 +110,26 @@ const ViewProduct = () => {
                     xs={4}
                     sx={{ padding: 1, border: "1px solid rgba(96, 96, 96, 0.1)" }}
                 >
-                    <DetailsComponent mainText="Consent" subText="Digital" />
-                    <DetailsComponent mainText="Insurance" subText="Double" />
-                    <DetailsComponent mainText="Policy Tenure" subText="24 months" />
-                    <DetailsComponent mainText="Min Entry Age" subText="18" />
-                    <DetailsComponent mainText="Max Entry Age" subText="35" />
-                    <DetailsComponent mainText="Maturity Age" subText="48" />
+                    <DetailsComponent
+                        mainText="Consent"
+                        subText={policyDetails.consent}
+                    />
+                    <DetailsComponent
+                        mainText="Insurance"
+                        subText={policyDetails.insurance}
+                    />
+                    <DetailsComponent
+                        mainText="Min Entry Age"
+                        subText={policyDetails.minEntryAge}
+                    />
+                    <DetailsComponent
+                        mainText="Max Entry Age"
+                        subText={policyDetails.maxEntryAge}
+                    />
+                    <DetailsComponent
+                        mainText="Maturity Age"
+                        subText={policyDetails.maturityAge}
+                    />
                 </Grid>
 
                 <Grid item xs={8} sx={{ border: "1px solid rgba(96, 96, 96, 0.1)" }}>
@@ -93,16 +143,16 @@ const ViewProduct = () => {
                             }}
                         >
                             <DetailsComponent
-                                mainText="For 30K Loan"
-                                subText="₹ 1,500"
+                                mainText="Sum Assured"
+                                subText={`₹ ${premiumDetails.sumAssured}`}
                             />
                             <DetailsComponent
-                                mainText="For 40K Loan"
-                                subText="₹ 2,000"
+                                mainText="Premium Amount"
+                                subText={`₹ ${premiumDetails.premiumAmount}`}
                             />
                             <DetailsComponent
-                                mainText="For 50K Loan"
-                                subText="₹ 2,500"
+                                mainText="Payment Mode"
+                                subText={premiumDetails.paymentMode}
                             />
                         </Grid>
                         <Grid
@@ -115,19 +165,19 @@ const ViewProduct = () => {
                         >
                             <DetailsComponent
                                 mainText="Account Number"
-                                subText="672254098767"
+                                subText={accountDetails.accountNo}
                             />
                             <DetailsComponent
                                 mainText="IFSC Code"
-                                subText="ICICI000008"
+                                subText={accountDetails.ifscCode}
                             />
                             <DetailsComponent
                                 mainText="Bank Name"
-                                subText="ICICI Bank"
+                                subText={accountDetails.bankName}
                             />
                             <DetailsComponent
                                 mainText="Holder Name"
-                                subText="Srikanth Pasnuri"
+                                subText={accountDetails.HolderName}
                             />
                         </Grid>
                         <Grid
@@ -155,7 +205,7 @@ const ViewProduct = () => {
                                             fontWeight: 500,
                                         }}
                                     >
-                                        Disbursment Deduction
+                                        Disbursement Deduction
                                     </Typography>
                                 </Grid>
                                 <Grid
@@ -178,9 +228,18 @@ const ViewProduct = () => {
                                 padding: 1,
                             }}
                         >
-                            <DetailsComponent mainText="Image Proof" />
+                            <DetailsComponent mainText="Image Proof" subText="" />
                             <Grid item xs={12} sx={{ pl: 1 }}>
-                                <ImageViewerComponent imgSrc={img} />
+                                <ImageViewerComponent
+                                    imgSrc={accountDetails.proofOfAccountConfirmation.map(
+                                        (proof) => proof.img1
+                                    )}
+                                />
+                                <ImageViewerComponent
+                                    imgSrc={accountDetails.proofOfAccountConfirmation.map(
+                                        (proof) => proof.img2
+                                    )}
+                                />
                             </Grid>
                         </Grid>
                     </Grid>
