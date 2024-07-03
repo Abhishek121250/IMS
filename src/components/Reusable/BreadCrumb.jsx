@@ -6,6 +6,7 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 const StyledBox = styled(Box)(() => ({
     display: "flex",
     alignItems: "center",
+    marginBottom: "1rem",
 }));
 
 const Breadcrumb = styled("div")(() => ({
@@ -25,6 +26,9 @@ const BreadCrumb = ({
     title = "Product List",
     breadcrumbs = ["Home", "Dashboard"],
 }) => {
+    // const {app,setLoading}=useAppState();
+    // setLoading(false)
+    // console.log(app.loading)
     return (
         <Box>
             <Box>
