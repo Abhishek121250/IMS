@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 
 import data from "../../../data";
+// import useProductListAPI from "../../../store/useProductListAPI";
 import ProductCard from "./ProductCard";
 import { useState } from "react";
 
@@ -10,6 +11,9 @@ const AllProducts = () => {
     const handleExpandClick = (productId) => {
         setExpandedProductId(expandedProductId === productId ? null : productId);
     };
+
+    // const data = useProductListAPI();
+    console.log(data, "check data");
 
     return (
         <Box style={{ maxHeight: "58vh", overflow: "auto" }}>
