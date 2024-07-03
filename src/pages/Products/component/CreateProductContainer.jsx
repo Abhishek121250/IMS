@@ -51,7 +51,15 @@ const CreateProductContainer = () => {
                     }}
                     onClick={handleCreateProductClick}
                 >
-                    <Typography>Create Product</Typography>
+                    <Typography
+                        sx={{
+                            fontSize: "14px",
+                            fontWeight: "500",
+                            color: "#FFFFFF",
+                        }}
+                    >
+                        Create Product
+                    </Typography>
                 </Button>
             </Box>
         </Box>

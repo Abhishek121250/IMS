@@ -37,8 +37,8 @@ const QuickOverview = () => {
                     >
                         <Typography
                             sx={{
-                                fontSize: "0.9rem",
-                                fontWeight: 600,
+                                fontSize: "16px",
+                                fontWeight: 500,
                                 color: "#54565C",
                             }}
                         >

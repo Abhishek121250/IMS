@@ -1,39 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Box, Grid, Typography } from "@mui/material";
 import LoanPaper from "../../../assets/svg/LoanPaper.svg";
-
-const databyID = {
-    id: "prd-dce05a9a-4b7a-40eb-b915-951bd457b5ad",
-    providerId: "prv-1a70dfd6-6464-4c32-9f52-ee413ebf37aa",
-    name: "Hospicash",
-    partner: "Finhaat",
-    policyDetails: {
-        consent: "Digital",
-        insurance: "Single",
-        minEntryAge: 18,
-        maxEntryAge: 65,
-        maturityAge: 75,
-        masterPolicyNumber: "MPN123456",
-        ratePerThousand: 10,
-    },
-    premiumDetails: {
-        sumAssured: "10000.00",
-        premiumAmount: "250.00",
-        paymentMode: "UPI",
-    },
-    accountDetails: {
-        accountNo: "1234567890",
-        HolderName: "Srikanth Pansuri",
-        ifscCode: "ABCD0123456",
-        bankName: "Sample Bank",
-        proofOfAccountConfirmation: [
-            {
-                img1: "proof123.jpg",
-                img2: "proof456.jpg",
-            },
-        ],
-    },
-};
+import useGetProductById from "../../../store/useGetProductById";
 
 const styles = {
     headerStyle: {
@@ -74,23 +42,13 @@ const DetailsComponent = ({ mainText, subText }) => (
     </Grid>
 );
 
-const ImageViewerComponent = ({ imgSrc }) => (
-    <Grid container>
-        {imgSrc.map((src, index) => (
-            <Grid item xs={6} key={index}>
-                <img
-                    src={src}
-                    alt={`Proof ${index + 1}`}
-                    style={{ width: "100%" }}
-                />
-            </Grid>
-        ))}
-    </Grid>
-);
+const ImageViewerComponent = () => <Grid container>-</Grid>;
 
-const ViewProduct = () => {
-    const { policyDetails, premiumDetails, accountDetails } = databyID;
+const ViewProduct = ({ productId }) => {
+    const data = useGetProductById({ productId });
 
+    const viewData = data?.data?.data?.data;
+    console.log(viewData);
     return (
         <Box>
             <Grid container>
@@ -114,23 +72,27 @@ const ViewProduct = () => {
                 >
                     <DetailsComponent
                         mainText="Consent"
-                        subText={policyDetails.consent}
+                        subText={viewData?.consentType || "-"}
                     />
                     <DetailsComponent
                         mainText="Insurance"
-                        subText={policyDetails.insurance}
+                        subText={viewData?.insuranceType || "-"}
                     />
                     <DetailsComponent
                         mainText="Min Entry Age"
-                        subText={policyDetails.minEntryAge}
+                        subText={viewData?.minEntryAge || "-"}
                     />
                     <DetailsComponent
                         mainText="Max Entry Age"
-                        subText={policyDetails.maxEntryAge}
+                        subText={viewData?.maxEntryAge || "-"}
                     />
                     <DetailsComponent
                         mainText="Maturity Age"
-                        subText={policyDetails.maturityAge}
+                        subText={viewData?.maturityAge || "-"}
+                    />
+                    <DetailsComponent
+                        mainText="Master Policy Number"
+                        subText={viewData?.masterPolicyNumber || "-"}
                     />
                 </Grid>
 
@@ -145,12 +107,22 @@ const ViewProduct = () => {
                             }}
                         >
                             <DetailsComponent
-                                mainText="Sum Assured"
-                                subText={`₹ ${premiumDetails.sumAssured}`}
+                                mainText="For ₹500 Premium"
+                                subText={`₹ ${
+                                    viewData?.premiums?.premiumAmount500 || "-"
+                                }`}
                             />
                             <DetailsComponent
-                                mainText="Premium Amount"
-                                subText={`₹ ${premiumDetails.premiumAmount}`}
+                                mainText="For ₹500 Premium"
+                                subText={`₹ ${
+                                    viewData?.premiums?.premiumAmount800 || "-"
+                                }`}
+                            />
+                            <DetailsComponent
+                                mainText="For ₹1200 Premium"
+                                subText={`₹ ${
+                                    viewData?.premiums?.premiumAmount1200 || "-"
+                                }`}
                             />
                         </Grid>
                         <Grid
@@ -163,19 +135,19 @@ const ViewProduct = () => {
                         >
                             <DetailsComponent
                                 mainText="Account Number"
-                                subText={accountDetails.accountNo}
+                                subText={viewData?.bankAccount?.accountNo || "-"}
                             />
                             <DetailsComponent
                                 mainText="IFSC Code"
-                                subText={accountDetails.ifscCode}
+                                subText={viewData?.bankAccount?.ifscCode || "-"}
                             />
                             <DetailsComponent
                                 mainText="Bank Name"
-                                subText={accountDetails.bankName}
+                                subText={viewData?.bankAccount?.bankName || "-"}
                             />
                             <DetailsComponent
                                 mainText="Holder Name"
-                                subText={accountDetails.HolderName}
+                                subText={viewData?.bankAccount?.holderName || "-"}
                             />
                         </Grid>
                         <Grid
@@ -203,7 +175,7 @@ const ViewProduct = () => {
                                             fontWeight: 400,
                                         }}
                                     >
-                                        {premiumDetails.paymentMode}
+                                        {viewData?.paymentType?.paymentMode || "-"}
                                     </Typography>
                                 </Grid>
                                 <Grid
@@ -229,14 +201,10 @@ const ViewProduct = () => {
                             <DetailsComponent mainText="Image Proof" subText="" />
                             <Grid item xs={12} sx={{ pl: 1 }}>
                                 <ImageViewerComponent
-                                    imgSrc={accountDetails.proofOfAccountConfirmation.map(
-                                        (proof) => proof.img1
-                                    )}
-                                />
-                                <ImageViewerComponent
-                                    imgSrc={accountDetails.proofOfAccountConfirmation.map(
-                                        (proof) => proof.img2
-                                    )}
+                                    imgSrc={
+                                        viewData?.bankAccount
+                                            ?.proofOfAccountConfirmation
+                                    }
                                 />
                             </Grid>
                         </Grid>

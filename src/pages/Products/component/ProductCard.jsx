@@ -172,7 +172,7 @@ const ProductCard = ({ item, options, isExpanded, onExpandClick }) => {
                     </Grid>
                     {isExpanded && (
                         <Grid item xs={12}>
-                            <ViewProduct />
+                            <ViewProduct productId={item?.id} />
                         </Grid>
                     )}
                     <Grid item xs={12}>
