@@ -30,15 +30,22 @@ const StatusCard = ({ icon, count, label, borderColor }) => {
                 <Grid item xs={5}>
                     <Typography
                         sx={{
-                            fontSize: "1rem",
-                            fontWeight: "600",
+                            fontSize: "16px",
+                            fontWeight: "700",
+                            color: "#2C3039",
                         }}
                     >
                         {count}
                     </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                    <Typography sx={{ fontSize: "0.8rem", fontWeight: "600" }}>
+                    <Typography
+                        sx={{
+                            fontSize: "12px",
+                            fontWeight: "600",
+                            color: "#939393",
+                        }}
+                    >
                         {label}
                     </Typography>
                 </Grid>

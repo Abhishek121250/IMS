@@ -57,7 +57,15 @@ const ProductContainer = () => {
                                         }}
                                         onClick={handleDialogOpen}
                                     >
-                                        <Typography> + Create Product</Typography>
+                                        <Typography
+                                            sx={{
+                                                fontSize: "14px",
+                                                fontWeight: "500",
+                                                color: "#FFFFFF",
+                                            }}
+                                        >
+                                            Create Product
+                                        </Typography>
                                     </Button>
                                 </Box>
                             </Grid>
@@ -67,7 +75,7 @@ const ProductContainer = () => {
                 <Grid item xs={12}>
                     <Box
                         sx={{
-                            height: "64vh",
+                            height: `calc(100vh - 150px)`,
                             marginTop: "1rem",
                             display: "flex",
                             justifyContent: "center",

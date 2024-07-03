@@ -13,7 +13,7 @@ const AllProducts = ({ productlist }) => {
     };
     console.log(productlist, "check in prod");
     return (
-        <Box style={{ maxHeight: "58vh", overflow: "auto" }}>
+        <Box style={{ maxHeight: `calc(100vh - 270px)`, overflow: "auto" }}>
             {productlist.map((item, index) => (
                 <ProductCard
                     key={index}

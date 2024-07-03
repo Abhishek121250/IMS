@@ -27,6 +27,13 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="left" ref={ref} {...props} />;
 });
 
+const cardData = [
+    { title: "Insurance", subtext: "Credit Life Insurance, Hospicash" },
+    { title: "JLG", subtext: "Joint Liability Groups" },
+    { title: "Instant KCC", subtext: "Agriculture based loans" },
+    { title: "Allied", subtext: "Milk society based loans" },
+];
+
 const getIcon = (title) => {
     switch (title) {
         case "Insurance":
@@ -42,8 +49,8 @@ const getIcon = (title) => {
     }
 };
 
-const CustomRadio = styled(Radio)({
-    color: "#DF2B87",
+const CustomRadio = styled(Radio)(({ theme }) => ({
+    color: "#939393",
     "&.Mui-checked": {
         color: "#DF2B87",
     },
@@ -51,9 +58,9 @@ const CustomRadio = styled(Radio)({
         width: 24,
         height: 24,
     },
-});
+}));
 
-const TickIcon = () => (
+const TickIcon = ({ color }) => (
     <svg
         width="24"
         height="24"
@@ -61,7 +68,7 @@ const TickIcon = () => (
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
     >
-        <circle cx="12" cy="12" r="12" fill="#DF2B87" />
+        <circle cx="12" cy="12" r="12" fill={color} />
         <path
             d="M7 12.5L10 15.5L17 8.5"
             stroke="white"
@@ -72,49 +79,51 @@ const TickIcon = () => (
     </svg>
 );
 
+const StyledCard = styled(Card)(({ theme, selected }) => ({
+    border: selected ? "2px solid #DF2B87" : "2px solid #D1D1D1",
+    marginBottom: "20px",
+    padding: 0,
+    paddingBottom: 0,
+    elevation: selected ? 4 : 0,
+}));
+
+const StyledCardContent = styled(CardContent)({
+    "&.MuiCardContent-root:last-child": {
+        padding: "0.5rem",
+    },
+});
+
 const CardItem = ({ title, subtext, selectedValue, handleChange }) => (
-    <div>
-        <Card
-            elevation={selectedValue === title ? 2 : 0}
-            sx={{
-                border:
-                    selectedValue === title
-                        ? "2px solid #DF2B87"
-                        : "2px solid #D1D1D1",
-                margin: 2,
-                padding: 0,
-                paddingBottom: 0,
-            }}
-        >
-            <CardContent
-                sx={{
-                    "&.MuiCardContent-root:last-child": {
-                        padding: "0.5rem",
-                    },
-                }}
-            >
-                <Grid container alignItems="center">
-                    <Grid item xs={2}>
-                        {getIcon(title)}
-                    </Grid>
-                    <Grid item xs={8}>
-                        <Typography variant="h6">{title}</Typography>
-                        <Typography variant="body2" color="textSecondary">
-                            {subtext}
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={2}>
-                        <CustomRadio
-                            checked={selectedValue === title}
-                            onChange={() => handleChange(title)}
-                            value={title}
-                            checkedIcon={<TickIcon />}
-                        />
-                    </Grid>
+    <StyledCard selected={selectedValue === title}>
+        <StyledCardContent>
+            <Grid container alignItems="center">
+                <Grid item xs={2}>
+                    {getIcon(title)}
                 </Grid>
-            </CardContent>
-        </Card>
-    </div>
+                <Grid item xs={8}>
+                    <Typography
+                        sx={{ fontSize: "16px", fontWeight: 550, color: "#2C3039" }}
+                    >
+                        {title}
+                    </Typography>
+                    <Typography
+                        sx={{ fontSize: "12px", fontWeight: 400, color: "#54565C" }}
+                    >
+                        {subtext}
+                    </Typography>
+                </Grid>
+                <Grid item xs={2}>
+                    <CustomRadio
+                        checked={selectedValue === title}
+                        onChange={() => handleChange(title)}
+                        value={title}
+                        icon={<TickIcon color="#939393" />}
+                        checkedIcon={<TickIcon color="#DF2B87" />}
+                    />
+                </Grid>
+            </Grid>
+        </StyledCardContent>
+    </StyledCard>
 );
 
 const SelectProduct = ({ open, onClose, onCreate }) => {
@@ -138,50 +147,84 @@ const SelectProduct = ({ open, onClose, onCreate }) => {
                 sx: {
                     height: "100%",
                     maxHeight: "100%",
-                    width: "40%",
-                    maxWidth: "40%",
+                    width: "500px",
+                    maxWidth: "500px",
                     position: "fixed",
                     right: 0,
                     m: 0,
                 },
             }}
         >
-            <DialogTitle sx={{ pl: 2 }}>
+            <DialogTitle sx={{ pl: 2, border: "1px solid #D9D9D9" }}>
                 <Grid container sx={{ display: "flex", alignItems: "center" }}>
                     <Grid item sx={{ fontSize: "1rem", fontWeight: 600 }}>
-                        <IconButton onClick={onClose}>
-                            <ArrowBackIcon fontSize="small" />
-                        </IconButton>
-                        Create a Product
-                        <Typography
-                            sx={{ fontSize: "0.7rem", fontWeight: 500, pl: 5 }}
-                        >
-                            Choose a product from the list
-                        </Typography>
+                        <Grid container>
+                            <Grid
+                                item
+                                xs={1}
+                                sx={{
+                                    display: "flex",
+                                    justifyContent: "left",
+                                    alignItems: "right",
+                                }}
+                            >
+                                <IconButton onClick={onClose}>
+                                    <ArrowBackIcon fontSize="small" />
+                                </IconButton>
+                            </Grid>
+                            <Grid
+                                item
+                                xs={10}
+                                sx={{
+                                    display: "flex",
+                                    justifyContent: "left",
+                                    alignItems: "right",
+                                }}
+                            >
+                                <Typography
+                                    sx={{
+                                        fontSize: "14px",
+                                        fontWeight: 600,
+                                        p: 1,
+                                        color: "#322B42",
+                                    }}
+                                >
+                                    Create a Product
+                                </Typography>
+                            </Grid>
+
+                            <Typography
+                                sx={{
+                                    fontSize: "12px",
+                                    fontWeight: 400,
+                                    pl: 5,
+                                    color: "#707070",
+                                }}
+                            >
+                                Choose a product from the list
+                            </Typography>
+                        </Grid>
                     </Grid>
                 </Grid>
             </DialogTitle>
             <DialogContent>
                 <Grid container sx={{ height: "100%" }}>
-                    <Grid item xs={12}>
-                        {["Insurance", "JLG", "Instant KCC", "Allied"].map(
-                            (title, index) => (
-                                <CardItem
-                                    key={index}
-                                    title={title}
-                                    subtext="Check data in sub text"
-                                    selectedValue={selectedValue}
-                                    handleChange={handleChange}
-                                />
-                            )
-                        )}
+                    <Grid item xs={12} sx={{ margin: 2 }}>
+                        {cardData.map((item, index) => (
+                            <CardItem
+                                key={index}
+                                title={item.title}
+                                subtext={item.subtext}
+                                selectedValue={selectedValue}
+                                handleChange={handleChange}
+                            />
+                        ))}
                     </Grid>
                     <Grid item xs={12} sx={{ margin: 2, marginTop: "auto" }}>
                         <Button
                             sx={{
                                 width: "100%",
                                 background: "#DF2B87",
-                                color: "red",
                                 ":hover": {
                                     background: "#DF2B87",
                                 },
@@ -191,7 +234,15 @@ const SelectProduct = ({ open, onClose, onCreate }) => {
                             onClick={handleCreate}
                             disabled={!selectedValue}
                         >
-                            <Typography> Select Product</Typography>
+                            <Typography
+                                sx={{
+                                    fontSize: "14px",
+                                    fontWeight: "500",
+                                    color: "#FFFFFF",
+                                }}
+                            >
+                                Select Product
+                            </Typography>
                         </Button>
                     </Grid>
                 </Grid>
