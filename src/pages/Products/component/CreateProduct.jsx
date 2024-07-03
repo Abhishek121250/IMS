@@ -105,7 +105,7 @@ const CreateProduct = () => {
                                     : "none",
                         }}
                         onClick={(event) => {
-                            event.preventDefault(); // Prevent default tab click behavior
+                            event.preventDefault();
                         }}
                     />
                 ))}
@@ -137,7 +137,6 @@ const CreateProduct = () => {
                 )}
                 {tabIndex === 3 && (
                     <Box>
-                        <Typography>More Info Content</Typography>
                         <PreviewData
                             goToNextTab={goToNextTab}
                             goToPreviousTab={goToPreviousTab}
