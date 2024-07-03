@@ -1,12 +1,16 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import BreadCrumb from "../../../components/Reusable/BreadCrumb";
 import CreateProductContainer from "../component/CreateProductContainer";
-import data from "../../../data";
+import useGetProductList from "../../../store/useGetProductList";
 import ProductListDashboard from "../component/ProductListDashboard";
 import SelectProduct from "../component/SelectProduct";
 import { useState } from "react";
 
 const ProductContainer = () => {
+    const data = useGetProductList();
+    console.log(data?.data?.data?.data?.results);
+
+    const productlist = data?.data?.data?.data?.results;
     const [isDialogOpen, setDialogOpen] = useState(false);
 
     const handleDialogOpen = () => {
@@ -31,7 +35,7 @@ const ProductContainer = () => {
                                 breadcrumbs={["Home", "Products"]}
                             />
                         </Grid>
-                        {data?.length > 0 && (
+                        {productlist?.length > 0 && (
                             <Grid item xs={2}>
                                 <Box
                                     sx={{
@@ -69,8 +73,8 @@ const ProductContainer = () => {
                             justifyContent: "center",
                         }}
                     >
-                        {data?.length ? (
-                            <ProductListDashboard />
+                        {productlist?.length ? (
+                            <ProductListDashboard productlist={productlist} />
                         ) : (
                             <CreateProductContainer />
                         )}

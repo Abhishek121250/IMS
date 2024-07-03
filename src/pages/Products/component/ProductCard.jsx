@@ -19,27 +19,30 @@ const styles = {
     cardStyle: {
         backgroundColor: "#F6F6F6",
         border: "1px solid #DEDEDE",
+        minHeight: "155px",
         marginTop: 1,
         marginBottom: 2,
         marginRight: 2,
     },
+    insideCardStyle: { minHeight: "123px" },
     buttonTextStyle: {
         color: "54565C",
         paddingLeft: 1,
-        fontSize: "0.7rem",
-        fontWeight: 500,
+        fontSize: "12px",
+        fontWeight: 400,
     },
     statusContainerStyle: {
         display: "flex",
         justifyContent: "right",
         alignItems: "center",
-        fontSize: "0.7rem",
+        fontSize: "12px",
+        fontWeight: "400",
     },
     bottomTextStyle: {
         margin: 1,
         marginLeft: 1.5,
-        fontSize: "0.7rem",
-        fontWeight: 500,
+        fontSize: "12px",
+        fontWeight: 400,
         color: "#54565C",
     },
     actionTabStyle: {
@@ -55,16 +58,16 @@ const styles = {
         maxHeight: "40px",
         minHeight: "40px",
     },
-    productProvider: { fontSize: "1rem", fontWeight: 500, color: "#2C3039" },
+    productProvider: { fontSize: "14px", fontWeight: 400, color: "#2C3039" },
     productPartner: {
-        fontSize: "0.7rem",
-        fontWeight: 500,
+        fontSize: "12px",
+        fontWeight: 400,
         color: "#54565C",
         borderRight: "1px solid #54565C",
     },
     productStyle: {
-        fontSize: "0.7rem",
-        fontWeight: 500,
+        fontSize: "12px",
+        fontWeight: 400,
         ml: 2,
         color: "#54565C",
     },
@@ -72,7 +75,7 @@ const styles = {
 
 const logos = {
     "prv-1a70dfd6-6464-4c32-9f52-ee413ebf37aa": Pramerica,
-    NIVA_5678: NivaBupa,
+    "vrv-1a70dfd6-6464-4c32-9f52-ee413ebf37aa": NivaBupa,
 };
 
 const statusStyles = {
@@ -84,7 +87,7 @@ const statusStyles = {
 
 const ProviderLogo = ({ providerId }) => {
     const logo = logos[providerId] || Logo;
-    return <img src={logo} alt="Provider Logo" />;
+    return <img src={logo} alt="Provider Logo" height="60px" width="60px" />;
 };
 
 const StatusBox = ({ status }) => {
@@ -145,13 +148,17 @@ const ProductCard = ({ item, options, isExpanded, onExpandClick }) => {
     return (
         <Card sx={styles.cardStyle}>
             <Card>
-                <Grid container>
+                <Grid container style={styles.insideCardStyle}>
                     <Grid item xs={12} sx={{ p: 1 }}>
                         <Grid container>
                             <Grid item xs={2}>
                                 <ProviderLogo providerId={item?.providerId} />
                             </Grid>
-                            <Grid item xs={6}>
+                            <Grid
+                                item
+                                xs={6}
+                                sx={{ display: "flex", alignItems: "center" }}
+                            >
                                 <ProductDetails
                                     provider={item?.provider}
                                     partner={item?.partner}

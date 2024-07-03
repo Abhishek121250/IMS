@@ -1,17 +1,17 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 
 import { Box } from "@mui/material";
 
-import data from "../../../data";
 import ProductCard from "./ProductCard";
 
-const CreatedProducts = () => {
+const CreatedProducts = ({ productlist }) => {
     const [expandedProductId, setExpandedProductId] = useState(null);
 
     const handleExpandClick = (productId) => {
         setExpandedProductId(expandedProductId === productId ? null : productId);
     };
-    const createdProducts = data.filter(
+    const createdProducts = productlist.filter(
         (item) => item.status === "Waiting for Admin Approval"
     );
 
